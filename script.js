@@ -46,10 +46,26 @@ function computerPlay() {
 }
 
 function game() {
+    let playerScore = 0;
+    let computerScore = 0;
     for (let i = 0; i < 5; i++) {
         const playerSelection = prompt("Please enter rock, paper, or scissors:");
         const computerSelection = computerPlay();
-        console.log(playAround(playerSelection, computerSelection));
+        let check = playAround(playerSelection, computerSelection);
+        console.log(check);
+
+        if (check.includes("You win!")) {
+            playerScore += 1;
+        } else if (check.includes("You lose!")) {
+            computerScore += 1;
+        }
+    }
+    if (playerScore > computerScore) {
+        console.log("You won over the AI :) your score is " + playerScore);
+    } else if (computerScore > playerScore) {
+        console.log("You lost against the AI :( the AI score is " + computerScore);
+    } else {
+        console.log("The result is draw :|");
     }
 
 }
