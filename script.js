@@ -4,7 +4,7 @@ function playAround(playerSelection, computerSelection) {
     /*check the user input*/
 
     if (!isNaN(playerSelection)) {
-        console.log("You enterd the wrong input")
+        console.log("You enterd the wrong input");
     } else {
 
         if (playerSelection === "rock" & computerSelection === "paper") {
