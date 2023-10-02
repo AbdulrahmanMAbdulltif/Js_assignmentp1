@@ -1,3 +1,6 @@
+const startButton = document.querySelector("#start");
+startButton.addEventListener("click", game);
+
 function playAround(playerSelection, computerSelection) {
   /*check the user input*/
 
@@ -42,14 +45,12 @@ function playAround(playerSelection, computerSelection) {
 function playerPlayed() {
   let playerChoice = prompt("Please enter rock, paper, or scissors:");
 
-  if (!isNaN(playerChoice)) {
-    console.log(
-      "Ohh are you afraid of losing? Come on, choose your tool: rock, paper or scissors? "
-    );
-  }
-  if (playerChoice === null) {
+  if (!isNaN(playerChoice) || playerChoice === null) {
     return null;
   }
+  //   if (playerChoice === null) {
+  //     return null;
+  //   }
   playerChoice = playerChoice.toLowerCase();
   return playerChoice;
 }
@@ -72,7 +73,8 @@ function game() {
   for (let gameRound = 0; gameRound < 5; gameRound++) {
     const playerSelection = playerPlayed();
     if (playerSelection === null) {
-      playerPlayed();
+      quittingGame();
+      //   playerPlayed();
       break;
     }
     const computerSelection = computerPlay();
@@ -87,18 +89,69 @@ function game() {
   }
 
   if (gameRound < 5) {
-    return console.log(
-      `Running away, are you? That's right, run and hide while I conquer the world muahhhhaahahahahaah`
-    );
+    return quittingGame();
   } else if (playerScore > computerScore) {
-    console.log(`Oh noooo 😱 You defeated me!! Ohhh nooo`);
+    return playerWins();
   } else if (computerScore > playerScore) {
-    console.log(
-      `GAME OVER! Loserrrrr 😂😂😂😂. Now, I shall conquer the world!`
-    );
+    return computerWins();
   } else {
-    console.log("It's a tie! Let's play again.");
+    return drawPlay();
   }
 }
 
+
+function quittingGame() {
+  const textTitle = document.querySelector(".title");
+  const textParagraf = document.querySelectorAll(".paragraph");
+  const buttonText = document.querySelector("#start");
+
+  textTitle.textContent = `Running away, are you?`;
+  textParagraf[0].textContent = "That's right, run and hide";
+  textParagraf[1].textContent = " while I conquer the world";
+  textParagraf[2].textContent = "muahhhhaahahahahaah";
+  buttonText.textContent = "GET BACK TO THE GAME";
+  playerPlayed();
+}
+
+function playerWins() {
+  const textTitle = document.querySelector(".title");
+  const textParagraf = document.querySelectorAll(".paragraph");
+  const buttonText = document.querySelector("#start");
+  const backgroundWinner = document.body;
+
+  backgroundWinner.style.background = "#ff0000";
+  textTitle.textContent = `Oh noooo!!! Ohhh nooo`;
+  textParagraf[0].textContent = "You defeated me!";
+  textParagraf[1].textContent = "😱😱😱😱";
+  textParagraf[2].textContent = "How was this possible?!";
+  buttonText.textContent = "Wipe out every trace";
+}
+
+function computerWins() {
+  const textTitle = document.querySelector(".title");
+  const textParagraf = document.querySelectorAll(".paragraph");
+  const buttonText = document.querySelector("#start");
+  const backgroundWinner = document.body;
+
+  backgroundWinner.style.background = "#0000cc";
+  textTitle.textContent = `GAME OVER! Loserrrrr . `;
+  textParagraf[0].textContent = "😂😂😂😂";
+  textParagraf[1].textContent = "Now, I shall conquer the world!";
+  textParagraf[2].textContent = "😈😈😈";
+  buttonText.textContent = "Start world domination!!";
+}
+
+function drawPlay() {
+  const textTitle = document.querySelector(".title");
+  const textParagraf = document.querySelectorAll(".paragraph");
+  const buttonText = document.querySelector("#start");
+
+  textTitle.textContent = `It's a tie! Let's play again.`;
+  textParagraf[0].textContent = "You will never defeat me";
+  textParagraf[1].textContent = "I shall conquer the world!";
+  textParagraf[2].textContent = "😈😈😈";
+  buttonText.textContent = "Restart the game";
+}
+=======
 game();
+
