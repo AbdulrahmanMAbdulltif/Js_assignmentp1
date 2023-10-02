@@ -99,6 +99,7 @@ function game() {
   }
 }
 
+
 function quittingGame() {
   const textTitle = document.querySelector(".title");
   const textParagraf = document.querySelectorAll(".paragraph");
@@ -151,3 +152,6 @@ function drawPlay() {
   textParagraf[2].textContent = "😈😈😈";
   buttonText.textContent = "Restart the game";
 }
+=======
+game();
+
