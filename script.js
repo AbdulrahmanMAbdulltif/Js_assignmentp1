@@ -153,5 +153,3 @@ function drawPlay() {
   buttonText.textContent = "Restart the game";
 }
 
-game();
-
