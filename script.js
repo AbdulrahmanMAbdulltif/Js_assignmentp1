@@ -152,6 +152,6 @@ function drawPlay() {
   textParagraf[2].textContent = "😈😈😈";
   buttonText.textContent = "Restart the game";
 }
-=======
+
 game();
 
