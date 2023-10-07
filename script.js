@@ -44,15 +44,19 @@ function playAround(playerSelection, computerSelection) {
 
 function playerPlayed() {
   let playerChoice = prompt("Please enter rock, paper, or scissors:");
-
-  if (!isNaN(playerChoice) || playerChoice === null) {
-    return null;
-  }
-  //   if (playerChoice === null) {
-  //     return null;
-  //   }
   playerChoice = playerChoice.toLowerCase();
-  return playerChoice;
+
+  while (true) {
+    if (
+      isNaN(playerChoice) && // Check if it's not a number
+      (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors")
+    ) {
+      return playerChoice; // Return the valid choice and exit the loop
+    } else {
+      playerChoice = prompt("Wrong Input. Try again. Enter rock, paper, or scissors.");
+      playerChoice = playerChoice.toLowerCase();
+    }
+  }
 }
 
 function computerPlay() {
